@@ -8,7 +8,6 @@ import { useRoute} from 'vue-router';
 
 const route = useRoute()
 // const router = useRouter();
-
 const jobId= route.params.id
 
 const form =reactive({
@@ -57,7 +56,7 @@ const handleSubmit=async()=>{
     toast.error('Job was not added')
   }
 }
-//
+
 onMounted(async()=>{
     try{
         const response=await axios.get(`http://localhost:5000/jobs/${jobId}`)
