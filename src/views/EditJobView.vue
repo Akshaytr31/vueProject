@@ -7,7 +7,7 @@ import { useRoute} from 'vue-router';
 
 
 const route = useRoute()
-// const router = useRouter();
+
 const jobId= route.params.id
 
 const form =reactive({
@@ -60,6 +60,7 @@ const handleSubmit=async()=>{
 onMounted(async()=>{
     try{
         const response=await axios.get(`http://localhost:5000/jobs/${jobId}`)
+  
         state.job=response.data
         form.type=state.job.type
         form.title=state.job.title
@@ -94,8 +95,8 @@ onMounted(async()=>{
               <label for="type" class="block text-gray-700 font-bold mb-2"
                 >Job Type</label
               >
-              <!-- v-model="form.type" -->
               <select
+              v-model="form.type"
                 id="type"
                 name="type"
                 class="border rounded w-full py-2 px-3"
@@ -112,8 +113,8 @@ onMounted(async()=>{
               <label class="block text-gray-700 font-bold mb-2"
                 >Job Listing Name</label
               >
-              <!-- v-model="form.title" -->
               <input
+              v-model="form.title"
                 type="text"
                 id="name"
                 name="name"
@@ -128,8 +129,8 @@ onMounted(async()=>{
                 class="block text-gray-700 font-bold mb-2"
                 >Description</label
               >
-              <!-- v-model="form.description" -->
               <textarea
+              v-model="form.description"
                 id="description"
                 name="description"
                 class="border rounded w-full py-2 px-3"
@@ -142,8 +143,8 @@ onMounted(async()=>{
               <label for="type" class="block text-gray-700 font-bold mb-2"
                 >Salary</label
               >
-              <!-- v-model="form.salary" -->
               <select
+              v-model="form.salary"
                 id="salary"
                 name="salary"
                 class="border rounded w-full py-2 px-3"
@@ -167,8 +168,8 @@ onMounted(async()=>{
               <label class="block text-gray-700 font-bold mb-2">
                 Location
               </label>
-              <!-- v-model="form.location" -->
               <input
+              v-model="form.location"
                 type="text"
                 id="location"
                 name="location"
@@ -184,8 +185,8 @@ onMounted(async()=>{
               <label for="company" class="block text-gray-700 font-bold mb-2"
                 >Company Name</label
               >
-              <!-- v-model="form.company.name" -->
               <input
+              v-model="form.company.name"
                 type="text"
                 id="company"
                 name="company"
@@ -200,8 +201,8 @@ onMounted(async()=>{
                 class="block text-gray-700 font-bold mb-2"
                 >Company Description</label
               >
-              <!-- v-model="form.company.description" -->
               <textarea
+              v-model="form.company.description"
                 id="company_description"
                 name="company_description"
                 class="border rounded w-full py-2 px-3"
@@ -216,8 +217,8 @@ onMounted(async()=>{
                 class="block text-gray-700 font-bold mb-2"
                 >Contact Email</label
               >
-              <!-- v-model="form.company.contactEmail" -->
               <input
+              v-model="form.company.contactEmail"
                 type="email"
                 id="contact_email"
                 name="contact_email"
@@ -232,8 +233,8 @@ onMounted(async()=>{
                 class="block text-gray-700 font-bold mb-2"
                 >Contact Phone</label
               >
-              <!-- v-model="form.company.contactPhone" -->
               <input
+              v-model="form.company.contactPhone"
                 type="tel"
                 id="contact_phone"
                 name="contact_phone"
