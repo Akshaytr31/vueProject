@@ -1,11 +1,11 @@
-<script>
-// import router from '@/router';
+<script setup>
+import router from "@/router";
 import { reactive, ref } from "vue";
 import axios from "axios";
 import { useToast } from "vue-toastification";
 
 const form = reactive({
-  selectOption: "Full-Time",
+  type: "Full-Time",
   title: "",
   description: "",
   salary: "",
@@ -44,7 +44,7 @@ const handleSubmit = async () => {
   }
 };
 
-const title = ref("");
+// const title = ref("");
 
 // const handleSelect = (value) => {
 //   console.log({ value });
@@ -64,11 +64,11 @@ const title = ref("");
             <label for="type" class="block text-gray-700 font-bold mb-2"
               >Job Type</label
             >
-            <!-- name="type" -->
-            <!-- v-model="form.type" -->
+
             <select
+              v-model="form.type"
               id="type"
-              v-model="form.selectOption"
+              name="type"
               class="border rounded w-full py-2 px-3"
               required
             >
@@ -83,31 +83,25 @@ const title = ref("");
             <label class="block text-gray-700 font-bold mb-2"
               >Job Listing Name</label
             >
-            <!-- v-model="form.title" -->
             <input
-              :value="title"
+              v-model="form.title"
               type="text"
               id="name"
               name="name"
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="eg. Beautiful Apartment In Miami"
               required
-              @input="
-                (value) => {
-                  console.log({ value });
-                }
-              "
             />
           </div>
           <div class="mb-4">
             <label for="description" class="block text-gray-700 font-bold mb-2"
               >Description</label
             >
-            <!-- v-model="form.description" -->
             <textarea
               id="description"
               name="description"
               class="border rounded w-full py-2 px-3"
+              v-model="form.description"
               rows="4"
               placeholder="Add any job duties, expectations, requirements, etc"
             ></textarea>
@@ -117,8 +111,8 @@ const title = ref("");
             <label for="type" class="block text-gray-700 font-bold mb-2"
               >Salary</label
             >
-            <!-- v-model="form.salary" -->
             <select
+             v-model="form.salary"
               id="salary"
               name="salary"
               class="border rounded w-full py-2 px-3"
@@ -140,8 +134,8 @@ const title = ref("");
 
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2"> Location </label>
-            <!-- v-model="form.location" -->
             <input
+            v-model="form.location"
               type="text"
               id="location"
               name="location"
@@ -157,8 +151,8 @@ const title = ref("");
             <label for="company" class="block text-gray-700 font-bold mb-2"
               >Company Name</label
             >
-            <!-- v-model="form.company.name" -->
             <input
+            v-model="form.company.name"
               type="text"
               id="company"
               name="company"
@@ -173,8 +167,8 @@ const title = ref("");
               class="block text-gray-700 font-bold mb-2"
               >Company Description</label
             >
-            <!-- v-model="form.company.description" -->
             <textarea
+            v-model="form.company.description"
               id="company_description"
               name="company_description"
               class="border rounded w-full py-2 px-3"
@@ -189,8 +183,8 @@ const title = ref("");
               class="block text-gray-700 font-bold mb-2"
               >Contact Email</label
             >
-            <!-- v-model="form.company.contactEmail" -->
             <input
+            v-model="form.company.contactEmail"
               type="email"
               id="contact_email"
               name="contact_email"
@@ -205,15 +199,15 @@ const title = ref("");
               class="block text-gray-700 font-bold mb-2"
               >Contact Phone</label
             >
-            <!-- v-model="form.company.contactPhone" -->
             <input
+            v-model="form.company.contactPhone"
               type="tel"
               id="contact_phone"
               name="contact_phone"
               class="border rounded w-full py-2 px-3"
               placeholder="Optional phone for applicants"
             />
-          </div>
+          </div> 
 
           <div>
             <button
